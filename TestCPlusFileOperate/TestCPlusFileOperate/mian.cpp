@@ -2,19 +2,17 @@
 #include <iostream>
 using namespace std;
 void main() {
-	ofstream out = ofstream("d:\\test.txt",ios::in | ios::out | ios::app);
-	cout << "app" << ios::app << endl << "out" << ios::out << endl << "in"
-		<< ios::in << endl << "trunc" << ios::trunc << endl << "binary"
-		<< ios::binary << endl<<"ate" << ios::ate << endl;
-	if (out.is_open())
-		cout << "yes" << endl;
-	out << "testone" << endl;
-	ofstream outtest;
-	outtest.open("d:\\test.txt",ios::in | ios::out | ios::app);
-	if (outtest.is_open())
-		cout << "test open" << endl;
-	outtest << "testtwo" << endl;
-	outtest.close();
-	out.clear();
-	getchar();
+	fstream file1 = fstream("d:\\file.txt", ios::in | ios::out);
+	if (file1.is_open())
+		cout << "in out yes" << endl;
+	fstream file2 = fstream("d:\\file1.txt", ios::in | ios::out | ios::app);
+	if (file2.is_open()) {
+		cout << "in out app yes" << endl;
+		file2 << "FILE2" << endl;
+	}
+	fstream file3 = fstream("d:\\file2.txt", ios::in | ios::out | ios::trunc);
+	if (file3.is_open()){
+		file3 << "FILE3" << endl;
+		cout << "in out trunc yes" << endl;
+	}
 }
